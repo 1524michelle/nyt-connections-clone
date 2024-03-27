@@ -7,7 +7,7 @@ import './Toolbar.css';
 
 const Toolbar = () => {
     const [settingsModalOpen, setSettingsModalOpen] = useState(false);
-    const [infoModalOpen, setInfoModalOpen] = useState(false);
+    const [infoModalOpen, setInfoModalOpen] = useState(true);
 
     const openSettingsModal = () => {
         setSettingsModalOpen(true);
