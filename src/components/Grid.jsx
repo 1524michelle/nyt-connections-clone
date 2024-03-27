@@ -14,7 +14,7 @@ const Grid = () => {
   const [attempts, setNewAttempt] = useState([]);
 
   // index using mistakeStrikes
-  const outcomeText = ["Perfect!", "Impressive", "Good", "Phew", "Next Time"];
+  const outcomeText = ["Perfect!", "Impressive", "Solid!", "Phew", "Next Time"];
   // tool to create copy paste tool
   const emojiMap = { 
     'easy': '🟨',
@@ -31,23 +31,23 @@ const Grid = () => {
   const fetchCategories = () => {
     const data = [
       {
-        name: "COLORS",
-        prompts: ["RED", "BLUE", "YELLOW", "GREEN"],
+        name: "UPDATE FOR ACCURACY",
+        prompts: ["AMEND", "CORRECT", "FIX", "REVISE"],
         difficulty: "easy"
       },
       {
-        name: "COUNTRIES",
-        prompts: ["JAPAN", "CANADA", "AUSTRALIA", "GERMANY"],
+        name: "QUARREL",
+        prompts: ["FIGHT", "ROW", "SCRAP", "TIFF"],
         difficulty: "medium"
       },
       {
-        name: "MUSICAL INSTRUMENTS",
-        prompts: ["GUITAR", "PIANO", "VIOLIN", "DRUMS"],
+        name: "GAMES OF CHANCE",
+        prompts: ["BINGO", "LOTTERY", "ROULETTE", "WAR"],
         difficulty: "hard"
       },
       {
-        name: "PLANETS",
-        prompts: ["MERCURY", "VENUS", "EARTH", "MARS"],
+        name: "___ CHIP",
+        prompts: ["BLUE", "COMPUTER", "POKER", "POTATO"],
         difficulty: "extrahard"
       }
     ];
@@ -130,7 +130,7 @@ const Grid = () => {
 
   // turns attempts into an array of emojis
   const shareResults = () => {
-    var s = "Connections\n";
+    var s = "Connections\nPuzzle #290\n"; // TODO: fix hardcoded puzzle number
     attempts.forEach((attempt) => {
       attempt.forEach((difficulty) => {
         s += emojiMap[difficulty]
@@ -204,7 +204,7 @@ const Grid = () => {
       <Modal isOpen={resultModalOpen} onClose={closeResultModal}>
         <div id='result-modal'>
           <h1 id='result-title'>{outcomeText[mistakeStrikes]}</h1>
-          {/* <h3>Connections #289</h3> TODO: fix or replace this */}
+          <h3>Connections #290</h3> {/* TODO: fix or replace this */}
           <Attempts attempts={attempts}/>
           <h4 className='result-subtitle'>NEXT PUZZLE IN:</h4>
           <Countdown />
