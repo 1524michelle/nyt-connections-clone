@@ -1,0 +1,28 @@
+/* shuffle: always active */
+/* deselect all: inactive unless at least one square is selected */
+/* submit: inactive until 4 squares are selected, turns black when active */
+
+.button {
+    border: 1px solid grey;
+    border-radius: 50px;
+    background-color: white;
+    color: grey;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 16px 4px 0;
+    padding: 14px 18px;
+}
+  
+.button.active-other {
+    color: black;
+    border-color: black;
+}
+  
+.button.active-submit {
+    background-color: black;
+    color: white;
+}
+
+.play {
+    padding: 16px 64px;
+}

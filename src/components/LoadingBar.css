@@ -1,0 +1,26 @@
+.container {
+    background-color: rgb(179, 167, 254);
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100vh;
+  }
+  
+  .loading-bar-container {
+    width: 10%;
+    height: 10px;
+    background-color: #f0f0f0;
+  }
+  
+  .loading-bar {
+    height: 100%;
+    border-radius: 9999;
+    background-color: black;
+    animation: progress 0.5s linear infinite; /* Animation to move the loading bar */
+  }
+  
+  @keyframes progress {
+    0% { width: 0; }
+    100% { width: 100%; }
+  }
+  

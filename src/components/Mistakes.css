@@ -1,0 +1,22 @@
+#mistake-text {
+    font-weight: 300;
+    font-size: 16px;
+    margin-top: 24px;
+}
+
+.mistake-bubbles {
+    margin-left: 88px;
+}
+
+.mistake-bubble {
+    display: inline-block;
+    background-color: rgb(90, 89, 78);
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    margin-left: 8px;
+}
+
+.invisible {
+    visibility: hidden;
+}

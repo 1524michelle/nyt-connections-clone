@@ -1,0 +1,50 @@
+/* not selected: rgb(239, 239, 230) black text */
+.square {
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    background-color: rgb(239, 239, 230);
+    margin: 5px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease;
+}
+
+.word {
+    font-size: 18px;
+    font-weight: 700;
+    color: black;
+}
+
+/* selected: rgb(90, 89, 78) white text */
+.square.selected {
+    background-color: rgb(90, 89, 78);
+}
+
+.square.selected .word {
+    color: white;
+}
+
+/* square press */
+.square.pressed {
+    transform: scale(0.9);
+}
+
+/* square vibrate */
+.square.mistake {
+    animation: shake 0.4s ease-in-out;
+}
+
+@media only screen and (max-width: 600px) {
+    .square {
+        height: 100px;
+        width: 100px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .square {
+        height: 80px;
+        width: 140px;
+    }
+}

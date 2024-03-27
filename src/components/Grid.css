@@ -1,0 +1,23 @@
+/* horizontally centers the grid on the page */
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* gets the squares in 4x4 grid instead of stacked 16x1 */
+.grid-row {
+    display: flex;
+}
+
+/* view results modal */
+#result-title {
+    font-family: 'Bree Serif', serif;
+    text-align: center;
+}
+
+.result-subtitle {
+    margin: 12px 0 0;
+    font-weight: 600;
+    font-size: 18px;
+}

@@ -1,0 +1,83 @@
+#root {
+    text-align: center;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.app {
+    height: 100%; /* Make sure the parent container of welcome-stage covers the viewport */
+}
+
+* {
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 300;
+}
+
+h1 {
+    text-align: left;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.game-name {
+    font-family: 'Bree Serif', serif;
+}
+
+#game-header {
+    margin: 30px 0px;
+}
+
+#date {
+    font-weight: 100;
+}
+
+@media only screen and (max-width: 600px) {
+    h1 {
+        text-align: center;
+    }
+
+    .game-name {
+        font-size: 32px;
+    }
+
+    #date {
+        font-size: 24px;
+        margin-left: 16px;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+    #game-header {
+        margin-left: 20px;
+    }
+
+    .game-name {
+        font-size: 32px;
+    }
+
+    #date {
+        font-size: 24px;
+        margin-left: 18px;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    #game-header {
+        margin-left: 80px;
+    }
+
+    .game-name {
+        font-size: 40px;
+    }
+
+    #date {
+        font-size: 30px;
+        margin-left: 20px;
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "categories": [
+      {
+        "name": "COLORS",
+        "prompts": ["RED", "BLUE", "YELLOW", "GREEN"],
+        "difficulty": "easy"
+      },
+      {
+        "name": "FRUITS",
+        "prompts": ["APPLE", "BANANA", "ORANGE", "GRAPE"],
+        "difficulty": "easy"
+      },
+      {
+        "name": "COUNTRIES",
+        "prompts": ["UNITED STATES", "CANADA", "AUSTRALIA", "GERMANY"],
+        "difficulty": "medium"
+      },
+      {
+        "name": "ANIMALS",
+        "prompts": ["DOG", "CAT", "ELEPHANT", "LION"],
+        "difficulty": "medium"
+      },
+      {
+        "name": "MUSICAL INSTRUMENTS",
+        "prompts": ["GUITAR", "PIANO", "VIOLIN", "DRUMS"],
+        "difficulty": "hard"
+      },
+      {
+        "name": "CAR BRANDS",
+        "prompts": ["TOYOTA", "HONDA", "FORD", "BMW"],
+        "difficulty": "hard"
+      },
+      {
+        "name": "PLANETS",
+        "prompts": ["MERCURY", "VENUS", "EARTH", "MARS"],
+        "difficulty": "extrahard"
+      }
+    ]
+  }
+  

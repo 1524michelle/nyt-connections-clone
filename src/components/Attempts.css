@@ -1,0 +1,7 @@
+.big-block {
+    width: 40px;
+    height: 40px;
+    margin: 1px 0 9px;
+    display: inline-flex;
+    border-radius: 5px;
+}

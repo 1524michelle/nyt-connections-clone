@@ -1,0 +1,34 @@
+.welcome-stage {
+    background-color: rgb(179, 167, 254);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#welcome-icon {
+    height: 84px;
+}
+
+#welcome-name {
+    font-family: 'Bree Serif', serif;
+    margin: 0px;
+}
+
+.welcome-h3 {
+    margin: 14px 0;
+}
+
+.welcome-p-div {
+    margin-top: 48px;
+}
+
+.welcome-p {
+    margin: 4px 0 0;
+}
+
+.by {
+    font-size: 14px;
+}

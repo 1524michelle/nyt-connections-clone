@@ -1,0 +1,108 @@
+#toolbar {
+    text-align: right;
+    padding-right: 20px;
+}
+
+hr {
+    margin: 0 0 2px;
+    color: gray;
+}
+
+img {
+    height: 18px;
+    padding: 12px 10px 12px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.toolbar-img:hover {
+    background-color: rgb(239, 239, 230);
+}
+
+/* settings */
+
+.settings-title {
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.settings-row {
+    padding-bottom: 6px;
+    font-size: 16px;
+}
+
+.left {
+    float: left;
+    font-weight: 700;
+    padding-left: 16px;
+}
+
+.right {
+    float: right;
+    padding-right: 16px;
+}
+
+/* info */
+
+#info-modal {
+    text-align: left;
+    font-size: 15px;
+}
+
+#info-title {
+    font-family: 'Bree Serif', sans-serif;
+    margin-bottom: 8px;
+}
+
+#info-subtitle {
+    margin-top: 8px;
+}
+
+.info-examples-title {
+    margin-bottom: 4px;
+}
+
+.info-list {
+    padding-left: 20px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+/* info scale */
+
+#scale-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.scale-row {
+    display: flex;
+}
+
+.block {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    display: inline-flex;
+    border-radius: 3px;
+    margin-bottom: 4px;
+}
+
+.scale-text {
+    margin: 0 0 0 10px;
+}
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+    #toolbar {
+        padding-right: 20px;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    #toolbar {
+        padding-right: 80px;
+    }
+}

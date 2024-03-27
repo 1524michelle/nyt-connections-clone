@@ -1,0 +1,62 @@
+.row {
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    background-color: rgb(239, 239, 230);
+    margin: 5px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    transition: transform 0.5s ease;
+}
+
+.slam {
+    animation: bounceEffect 0.5s ease 1;
+}
+
+@keyframes bounceEffect {
+    0% { transform: scale(1.1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}  
+
+.easy {
+    background-color: rgb(249, 223, 109);
+}
+
+.medium {
+    background-color: rgb(160, 195, 90);
+}
+
+.hard {
+    background-color: rgb(176, 196, 239);
+}
+
+.extrahard {
+    background-color: rgb(186, 129, 197);
+}
+
+.category {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 4px;
+}
+
+.words {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .row {
+        height: 100px;
+        width: 430px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .row {
+        height: 80px;
+        width: 590px;
+    }
+}
