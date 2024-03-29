@@ -36,9 +36,13 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .square {
-        height: 100px;
-        width: 100px;
+    .grid-container {
+        width: 100%; /* grid occupies full width in a small screen */
+    }
+
+    .square { /* sized based on viewport width */
+        height: calc((100vw - 10px * 5) / 4);
+        width: calc((100vw - 10px * 5) / 4);
     }
 }
 
