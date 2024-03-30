@@ -17,22 +17,33 @@
 }
 
 /* selected: rgb(90, 89, 78) white text */
-.square.selected {
+.selected {
     background-color: rgb(90, 89, 78);
 }
 
-.square.selected .word {
+.selected .word {
     color: white;
 }
 
 /* square press */
-.square.pressed {
+.pressed {
     transform: scale(0.9);
 }
 
-/* square vibrate */
-.square.mistake {
-    animation: shake 0.4s ease-in-out;
+/* square vibrate w/ defined shake */
+@keyframes shake {
+    0% { transform: translate(0px, 0px); }
+    20% { transform: translate(-5px, 0px); }
+    40% { transform: translate(5px, 0px); }
+    60% { transform: translate(-5px, 0px); }
+    80% { transform: translate(5px, 0px); }
+    100% { transform: translate(0px, 0px); }
+}
+
+.selected.mistake {
+    background-color: rgba(90, 89, 78, 0.5);
+    animation: shake 0.3s ease-in-out;
+    animation-fill-mode: forwards;
 }
 
 @media only screen and (max-width: 600px) {

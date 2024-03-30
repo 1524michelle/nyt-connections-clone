@@ -118,6 +118,14 @@ const Grid = () => {
     }
   }
 
+  const handleAnimationEnd = (event) => {
+    if (event.animationName === 'shake') {
+      setTimeout(() => {
+        setMistake(false);
+      }, 300);
+    }
+  };
+
   // attempts is a list of len 4 arrays with difficulty ratings of selected words
   const processAttempt = () => {
     var difficulties = []
@@ -179,6 +187,7 @@ const Grid = () => {
                     isSelected={selectedSquares.includes(word)}
                     onClick={handleSquareClick}
                     isMistake={isMistake}
+                    handleAnimationEnd={handleAnimationEnd}
                   />
                 ))}
               </div>
