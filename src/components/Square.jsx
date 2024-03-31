@@ -1,10 +1,11 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import './Square.css';
 
 const Square = ({ word, isSelected, onClick, isMistake, handleAnimationEnd }) => {
   const [pressed, setPressed] = useState(false);
+  const squareRef = useRef(null);
 
   useEffect(() => {
     const handleMouseUp = () => {
@@ -32,6 +33,24 @@ const Square = ({ word, isSelected, onClick, isMistake, handleAnimationEnd }) =>
     };
   }, []);
 
+  // sizes font size to the square
+  useEffect(() => {
+    const handleResize = () => {
+      const availableWidth = squareRef.current.clientWidth; // width in the square
+      const wordWidth = squareRef.current.querySelector('.word').offsetWidth; // word width
+      if (wordWidth > availableWidth) {
+        const fontSize = (availableWidth / wordWidth) * 18 * 0.9; // 0.9 scaling factor
+        squareRef.current.querySelector('.word').style.fontSize = `${fontSize}px`;
+      } else {
+        squareRef.current.querySelector('.word').style.fontSize = '18px'; // leave it alone if it fits
+      }
+    };
+
+    handleResize(); // call once to initialize font size
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [word]);
+
   const handleMouseDown = () => {
     setPressed(true);
     onClick(word);
@@ -39,6 +58,7 @@ const Square = ({ word, isSelected, onClick, isMistake, handleAnimationEnd }) =>
 
   return (
     <div
+      ref={squareRef}
       className={`square ${isSelected ? 'selected' : ''} ${pressed ? 'pressed' : ''} ${
         isMistake ? 'mistake' : ''
       }`}
