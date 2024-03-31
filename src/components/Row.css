@@ -54,7 +54,7 @@
     }
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 601px) {
     .row {
         height: 80px;
         width: 590px;
