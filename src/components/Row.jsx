@@ -16,8 +16,10 @@ const Row = ({ category, words, difficulty }) => {
   return (
     <>
       <div className={`row ${difficulty} ${slam ? 'slam' : ''}`}>
-        <p className='category'>{category}</p>
-        <p className='words'>{words}</p>
+        <div>
+          <p className='category'>{category}</p>
+          <p className='words'>{words}</p>
+        </div>
       </div>
     </>
   );
