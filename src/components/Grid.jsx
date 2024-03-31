@@ -83,7 +83,6 @@ const Grid = () => {
 
   const handleSubmit = () => {
     if (selectedSquares.length == 4) {
-      // is there a category that contains every selected square?
       const match = categories.find(category =>
         selectedSquares.every(square => category.prompts.includes(square))
       );
@@ -102,6 +101,19 @@ const Grid = () => {
           }, 3000);
         }
       } else { // mistake: words not from the same category
+        const closeMatch = categories.find(category => {
+          const matchingWords = selectedSquares.filter(square => category.prompts.includes(square));
+          return matchingWords.length == 3;
+        });
+    
+        if (closeMatch) {
+          setIsVisible(true);
+          setAlertMsg("One away...");
+          setTimeout(() => {
+            setIsVisible(false);
+          }, 3000);
+        }
+
         setMistakeStrike(prevMistakeStrikes => prevMistakeStrikes + 1);
         
         // vibrate on mistake
