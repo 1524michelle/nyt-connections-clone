@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Ensure it appears above other content */
+    z-index: 1000; /* appears above all other content */
 }
 
 @keyframes slideIn {
@@ -41,15 +41,15 @@
 
 @media (min-width: 601px) and (max-width: 900px) {
     .modal {
-        width: 400px; /* Adjust width as needed */
+        width: 400px;
     }
 }
 
 @media (max-width: 600px) {
     .modal {
-        width: calc(100% - 20px); /* Screen width minus padding */
-        max-width: 600px; /* Maximum width */
-        padding: 20px; /* Adjust padding as needed */
+        width: calc(100% - 20px); /* screen width minus padding */
+        max-width: 600px;
+        padding: 20px;
         bottom: 0;
         top: unset;
         left: 10px;
@@ -58,12 +58,12 @@
     }
 
     .modal-overlay {
-        align-items: flex-end; /* Align modal to bottom of screen */
+        align-items: flex-end; /* align modal to bottom of screen */
     }
 }
 
 @media (min-width: 901px) {
     .modal {
-        width: 600px; /* Adjust width as needed */
+        width: 600px;
     }
 }

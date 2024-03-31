@@ -24,7 +24,7 @@
     border-radius: 9999;
     background-color: rgba(0, 0, 0, 1);
     border-radius: 999px;
-    animation: progress 0.5s linear infinite; /* Animation to move the loading bar */
+    animation: progress 0.5s linear infinite; /* loading bar animation */
   }
   
   @keyframes progress {

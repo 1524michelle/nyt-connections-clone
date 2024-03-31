@@ -26,8 +26,8 @@ const Game = () => {
   }, []);
 
   const handlePlay = () => {
-    setFadeIn(false); // Trigger fade out animation
-    setTimeout(() => setShowWelcome(false), 300); // Hide Welcome component after animation
+    setFadeIn(false); // trigger fade out animation
+    setTimeout(() => setShowWelcome(false), 300); // hide welcome stage after animation
   };
 
   return (

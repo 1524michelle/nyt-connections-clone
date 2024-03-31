@@ -29,7 +29,7 @@ const Grid = () => {
     fetchCategories();
   }, []);
 
-  // todo: this is hardcoded data for frontend testing
+  // TODO: this is hardcoded data for frontend testing
   const fetchCategories = () => {
     const data = [
       {
