@@ -11,6 +11,15 @@
     z-index: 1000; /* Ensure it appears above other content */
 }
 
+@keyframes slideIn {
+    from {
+        transform: translateY(16px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
 .modal {
     position: relative; /* Ensure relative positioning for absolute positioning of close button */
     background-color: white;
@@ -18,6 +27,10 @@
     padding: 44px 64px;
     border-radius: 4px;
     box-shadow: 0 3px 12px -1px rgba(0,0,0,.3); /* Add shadow */
+    /* Animation styles */
+    animation-name: slideIn;
+    animation-duration: 0.25s;
+    animation-timing-function: ease-in-out;
 }
 
 .close-button {
@@ -26,7 +39,3 @@
     right: 10px;
     cursor: pointer;
 }
-
-/* .modal-content { */
-    /* Add your custom styles for modal content */
-/* } */
