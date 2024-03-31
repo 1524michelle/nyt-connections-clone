@@ -4,16 +4,16 @@ import './Grid.css';
 import { Alert, Attempts, Button, Countdown, Mistakes, Modal, Square, Row } from './';
 
 const Grid = () => {
-  const [selectedSquares, setSelectedSquares] = useState([]);
-  const [categories , setCategories] = useState([]);
-  const [shuffledPrompts, setShuffledPrompts] = useState([]);
-  const [mistakeStrikes, setMistakeStrike] = useState(0);
-  const [rows, setRows] = useState([]);
-  const [isMistake, setMistake] = useState(false);
-  const [resultModalOpen, setResultModalOpen] = useState(false);
-  const [attempts, setNewAttempt] = useState([]);
-  const [isVisible, setIsVisible] = useState(false);
-  const [alertMsg, setAlertMsg] = useState("");
+  const [selectedSquares, setSelectedSquares] = useState([]); // array of selected squares
+  const [categories , setCategories] = useState([]); // array of categories & prompts
+  const [shuffledPrompts, setShuffledPrompts] = useState([]); // array of prompts for the grid
+  const [mistakeStrikes, setMistakeStrike] = useState(0); // number of strikes used
+  const [rows, setRows] = useState([]); // rows solved by user
+  const [isMistake, setMistake] = useState(false); // controls square mistake animation
+  const [resultModalOpen, setResultModalOpen] = useState(false); // controls result modal
+  const [attempts, setNewAttempt] = useState([]); // array of arrays of attempt difficulties
+  const [isAlertVisible, setIsAlertVisible] = useState(false); // controls visibility of alerts
+  const [alertMsg, setAlertMsg] = useState(""); // controls message in alerts
 
   // index using mistakeStrikes
   const outcomeText = ["Perfect!", "Impressive", "Solid", "Phew", "Next Time"];
@@ -90,10 +90,10 @@ const Grid = () => {
         setSelectedSquares([]);
         setRows([...rows, match]);
         if (rows.length + 1 == 4) { // take into account async state
-          setIsVisible(true);
+          setIsAlertVisible(true);
           setAlertMsg(outcomeText[mistakeStrikes]);
           setTimeout(() => {
-            setIsVisible(false);
+            setIsAlertVisible(false);
           }, 3000);
         }
       } else { // mistake: words not from the same category
@@ -103,10 +103,10 @@ const Grid = () => {
         });
     
         if (closeMatch) {
-          setIsVisible(true);
+          setIsAlertVisible(true);
           setAlertMsg("One away...");
           setTimeout(() => {
-            setIsVisible(false);
+            setIsAlertVisible(false);
           }, 3000);
         }
 
@@ -119,10 +119,10 @@ const Grid = () => {
 
           // game ends: too many mistakes!
           if (mistakeStrikes + 1 >= 4) { // take into account async state
-            setIsVisible(true);
+            setIsAlertVisible(true);
             setAlertMsg(outcomeText[mistakeStrikes+1]);
             setTimeout(() => {
-              setIsVisible(false);
+              setIsAlertVisible(false);
             }, 3000);
             setSelectedSquares([]);
             // add each row with a delay between them
@@ -185,7 +185,7 @@ const Grid = () => {
 
   return (
     <>
-      <Alert message={alertMsg} isVisible={isVisible} />
+      <Alert message={alertMsg} isVisible={isAlertVisible} />
 
       <p id='instructions'>Create four groups of four!</p>
 
