@@ -2,16 +2,6 @@
     text-align: center;
 }
 
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
-
-.app {
-    height: 100%; /* Make sure the parent container of welcome-stage covers the viewport */
-}
-
 * {
     font-family: 'Public Sans', sans-serif;
     font-weight: 300;
