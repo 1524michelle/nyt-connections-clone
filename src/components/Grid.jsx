@@ -14,6 +14,7 @@ const Grid = () => {
   const [attempts, setNewAttempt] = useState([]); // array of arrays of attempt difficulties
   const [isAlertVisible, setIsAlertVisible] = useState(false); // controls visibility of alerts
   const [alertMsg, setAlertMsg] = useState(""); // controls message in alerts
+  const [submitInTimeout, setSubmitInTimeout] = useState(false); // controls submit button use after a mistake
 
   // index using mistakeStrikes
   const outcomeText = ["Perfect!", "Impressive", "Solid", "Phew", "Next Time"];
@@ -71,6 +72,7 @@ const Grid = () => {
   const handleSquareClick = (word) => {
     if (selectedSquares.includes(word)) {
       setSelectedSquares(selectedSquares.filter((w) => w !== word));
+      setSubmitInTimeout(false); // reset if a square gets deselected
     } else if (!selectedSquares.includes(word) && selectedSquares.length < 4) {
       setSelectedSquares([...selectedSquares, word])
     }
@@ -78,7 +80,7 @@ const Grid = () => {
 
   // handle submission of an attempt, mistakes, and state
   const handleSubmit = () => {
-    if (selectedSquares.length == 4) {
+    if (selectedSquares.length == 4 && !submitInTimeout) {
       const match = categories.find(category =>
         selectedSquares.every(square => category.prompts.includes(square))
       );
@@ -110,6 +112,7 @@ const Grid = () => {
           }, 3000);
         }
 
+        setSubmitInTimeout(true);
         setMistakeStrike(prevMistakeStrikes => prevMistakeStrikes + 1);
         
         // vibrate on mistake
@@ -225,7 +228,7 @@ const Grid = () => {
 
           <Button text="Shuffle" onClick={shufflePrompts} isActive={true} />
           <Button text="Deselect all" onClick={() => setSelectedSquares([])} isActive={selectedSquares.length > 0} />
-          <Button text="Submit" onClick={handleSubmit} isActive={selectedSquares.length == 4} />
+          <Button text="Submit" onClick={handleSubmit} isActive={selectedSquares.length == 4 && !submitInTimeout} />
         </div>
       ) : (
         <div>
