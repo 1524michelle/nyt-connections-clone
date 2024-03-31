@@ -6,11 +6,9 @@ import './Alert.css';
 const Alert = ({ message, isVisible }) => {
     return (
       <>
-        {isVisible && (
-          <div className="alert">
-            <span>{message}</span>
-          </div>
-        )}
+        <div className={`alert fade ${isVisible ? 'fade-in' : 'fade-out'}`}>
+          <span>{message}</span>
+        </div>
       </>
     );
 };
