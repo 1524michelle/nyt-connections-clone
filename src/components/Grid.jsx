@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import './Grid.css';
-import { Attempts, Button, Countdown, Mistakes, Modal, Square, Row } from './';
+import { Alert, Attempts, Button, Countdown, Mistakes, Modal, Square, Row } from './';
 
 const Grid = () => {
   const [selectedSquares, setSelectedSquares] = useState([]);
@@ -12,9 +12,11 @@ const Grid = () => {
   const [isMistake, setMistake] = useState(false);
   const [resultModalOpen, setResultModalOpen] = useState(false);
   const [attempts, setNewAttempt] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
+  const [alertMsg, setAlertMsg] = useState("");
 
   // index using mistakeStrikes
-  const outcomeText = ["Perfect!", "Impressive", "Solid!", "Phew", "Next Time"];
+  const outcomeText = ["Perfect!", "Impressive", "Solid", "Phew", "Next Time"];
   // tool to create copy paste tool
   const emojiMap = { 
     'easy': '🟨',
@@ -92,8 +94,12 @@ const Grid = () => {
         setCategories(categories.filter(category => category.name !== match.name));
         setSelectedSquares([]);
         setRows([...rows, match]);
-        if (rows.length == 4) {
-          console.log("PERFECT: GAME ENDED");
+        if (rows.length + 1 == 4) { // take into account async state
+          setIsVisible(true);
+          setAlertMsg(outcomeText[mistakeStrikes]);
+          setTimeout(() => {
+            setIsVisible(false);
+          }, 3000);
         }
       } else { // mistake: words not from the same category
         setMistakeStrike(prevMistakeStrikes => prevMistakeStrikes + 1);
@@ -104,8 +110,12 @@ const Grid = () => {
           setMistake(false);
 
           // game ends: too many mistakes!
-          if (mistakeStrikes >= 3) {
-            console.log("FAIL: GAME ENDED");
+          if (mistakeStrikes + 1 >= 4) { // take into account async state
+            setIsVisible(true);
+            setAlertMsg(outcomeText[mistakeStrikes+1]);
+            setTimeout(() => {
+              setIsVisible(false);
+            }, 3000);
             setSelectedSquares([]);
             // add each row with a delay between them
             categories.forEach((category, index) => {
@@ -166,6 +176,8 @@ const Grid = () => {
 
   return (
     <>
+      <Alert message={alertMsg} isVisible={isVisible} />
+
       <p id='instructions'>Create four groups of four!</p>
 
       <div className="grid-container">

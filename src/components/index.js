@@ -1,3 +1,4 @@
+export { default as Alert } from './Alert';
 export { default as Attempts } from './Attempts';
 export { default as Button } from './Button';
 export { default as Countdown } from './Countdown';
