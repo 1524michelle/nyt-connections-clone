@@ -62,18 +62,13 @@ const Grid = () => {
   }, [categories]); // shuffle once when the component is changed?
 
   const shufflePrompts = () => {
-    // generate a flat list of all prompts from categories
     const allPrompts = categories.reduce((acc, curr) => acc.concat(curr.prompts), []);
-
-    // shuffle the prompts randomly
     const shuffled = allPrompts.sort(() => Math.random() - 0.5);
-
     setShuffledPrompts(shuffled);
   };
 
+  // square click: selects the square
   const handleSquareClick = (word) => {
-    // if the word is selected, remove it from the selected array
-    // elif the word is not selected and there are fewer than 4 selected, append it to the selected array
     if (selectedSquares.includes(word)) {
       setSelectedSquares(selectedSquares.filter((w) => w !== word));
     } else if (!selectedSquares.includes(word) && selectedSquares.length < 4) {
@@ -81,6 +76,7 @@ const Grid = () => {
     }
   };
 
+  // handle submission of an attempt, mistakes, and state
   const handleSubmit = () => {
     if (selectedSquares.length == 4) {
       const match = categories.find(category =>
@@ -140,17 +136,9 @@ const Grid = () => {
         }, 1500);
       }
     }
-  }
-
-  const handleAnimationEnd = (event) => {
-    if (event.animationName === 'shake') {
-      setTimeout(() => {
-        setMistake(false);
-      }, 300);
-    }
   };
 
-  // attempts is a list of len 4 arrays with difficulty ratings of selected words
+  // collects newest submission difficulties into array of attempts
   const processAttempt = () => {
     var difficulties = []
     selectedSquares.forEach((word) => {
@@ -158,7 +146,7 @@ const Grid = () => {
       difficulties.push(difficulty);
     });
     setNewAttempt(prevAttempt => [...prevAttempt, difficulties]);
-  }
+  };
 
   // turns attempts into an array of emojis
   const shareResults = () => {
@@ -176,7 +164,16 @@ const Grid = () => {
     .catch((error) => {
       console.error('Error copying text: ', error);
     });
-  }
+  };
+
+  // passed into Square, restore state after animation
+  const handleAnimationEnd = (event) => {
+    if (event.animationName === 'shake') {
+      setTimeout(() => {
+        setMistake(false);
+      }, 300);
+    }
+  };
 
   const openResultModal = () => {
       setResultModalOpen(true);
