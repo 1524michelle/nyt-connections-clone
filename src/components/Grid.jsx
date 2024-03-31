@@ -96,24 +96,26 @@ const Grid = () => {
           console.log("PERFECT: GAME ENDED");
         }
       } else { // mistake: words not from the same category
-        setMistakeStrike(prevMistakeStrikes => prevMistakeStrikes + 1)
+        setMistakeStrike(prevMistakeStrikes => prevMistakeStrikes + 1);
+        
         // vibrate on mistake
         setMistake(true);
         setTimeout(() => {
           setMistake(false);
-        }, 3000);
-        // game ends: too many mistakes!
-        if (mistakeStrikes >= 3) {
-          console.log("FAIL: GAME ENDED");
-          setSelectedSquares([]);
-          // add each row with a delay between them
-          categories.forEach((category, index) => {
+
+          // game ends: too many mistakes!
+          if (mistakeStrikes >= 3) {
+            console.log("FAIL: GAME ENDED");
+            setSelectedSquares([]);
+            // add each row with a delay between them
+            categories.forEach((category, index) => {
               setTimeout(() => {
-                  setRows(rows => [...rows, category]);
-                  setCategories(categories => categories.filter(cat => cat.name !== category.name))
+                setRows(rows => [...rows, category]);
+                setCategories(categories => categories.filter(cat => cat.name !== category.name));
               }, index * 1000);
-          });
-        }
+            });
+          }
+        }, 1500);
       }
     }
   }
