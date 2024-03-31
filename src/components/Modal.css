@@ -20,6 +20,15 @@
     }
 }
 
+@keyframes slideOut {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(16px);
+    }
+}
+
 .modal {
     position: relative;
     background-color: white;
@@ -30,6 +39,13 @@
     animation-name: slideIn;
     animation-duration: 0.25s;
     animation-timing-function: ease-in-out;
+}
+
+.closing {
+    animation-name: slideOut;
+    animation-duration: 0.25s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards; /* Keep modal in the final state after animation */
 }
 
 .close-button {
