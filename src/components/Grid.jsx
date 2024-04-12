@@ -5,7 +5,7 @@ import { Alert, Attempts, Button, Countdown, Mistakes, Modal, Square, Row } from
 
 const Grid = () => {
   const [selectedSquares, setSelectedSquares] = useState([]); // array of selected squares
-  const [categories , setCategories] = useState([]); // array of categories & prompts
+  const [categories, setCategories] = useState([]); // array of categories & prompts
   const [shuffledPrompts, setShuffledPrompts] = useState([]); // array of prompts for the grid
   const [mistakeStrikes, setMistakeStrike] = useState(0); // number of strikes used
   const [rows, setRows] = useState([]); // rows solved by user
