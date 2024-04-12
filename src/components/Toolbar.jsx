@@ -37,13 +37,13 @@ const Toolbar = () => {
                     <p className='settings-title'>SETTINGS</p>
                     <p className='settings-row'>
                         <span className='left'>Feedback</span>
-                        <span className='right'><a href="">GitHub Issue</a></span>
+                        <span className='right'><a href="https://github.com/1524michelle/nyt-connections-clone/issues">GitHub Issue</a></span>
                     </p>
                     <br />
                     <hr />
                     <p className='settings-row'>
                         <span className='left'>Report a Bug</span>
-                        <span className='right'><a href="">Github Issue</a></span>
+                        <span className='right'><a href="https://github.com/1524michelle/nyt-connections-clone/issues">Github Issue</a></span>
                     </p>
                     <br />
                     <hr />
