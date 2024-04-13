@@ -14,6 +14,8 @@ Modal dialogues: allow the player to access the settings, instructions on how to
 
 ### In Development
 
+Enable users to create their own connections and share its link to their friends.
+
 Backend that serves up puzzle prompts each day.
 
 ## Contributing
