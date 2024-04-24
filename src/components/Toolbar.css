@@ -3,6 +3,11 @@
     padding-right: 20px;
 }
 
+.toolbar-button {
+    background: none;
+    border: none;
+}
+
 hr {
     margin: 0 0 2px;
     color: gray;

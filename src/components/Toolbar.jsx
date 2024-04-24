@@ -25,12 +25,36 @@ const Toolbar = () => {
         setInfoModalOpen(false);
     };
 
+    const handleSettingsKeyDown = (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            openSettingsModal();
+        }
+    };
+
+    const handleInfoKeyDown = (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            openInfoModal();
+        }
+    };
+
     return (
         <>
             <hr />
             <div id="toolbar">
-                <img className='toolbar-img' onClick={openSettingsModal} src={settingsIcon} alt="Settings" />
-                <img className='toolbar-img' onClick={openInfoModal} src={questionIcon} alt="Question" />
+                <button
+                    className="toolbar-button"
+                    onClick={openSettingsModal}
+                    onKeyDown={handleSettingsKeyDown}
+                >
+                    <img className='toolbar-img' src={settingsIcon} alt="Settings" />
+                </button>
+                <button
+                    className="toolbar-button"
+                    onClick={openInfoModal}
+                    onKeyDown={handleInfoKeyDown}
+                >
+                    <img className='toolbar-img' src={questionIcon} alt="Question" />
+                </button>
             </div>
             <Modal isOpen={settingsModalOpen} onClose={closeSettingsModal}>
                 <div>

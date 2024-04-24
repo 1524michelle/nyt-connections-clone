@@ -62,6 +62,9 @@ const Square = ({ word, isSelected, onClick, isMistake, handleAnimationEnd }) =>
       className={`square ${isSelected ? 'selected' : ''} ${pressed ? 'pressed' : ''} ${
         isMistake ? 'mistake' : ''
       }`}
+      role="button"
+      aria-pressed={pressed}
+      aria-label={word}
       onMouseDown={handleMouseDown}
       onAnimationEnd={handleAnimationEnd}
     >

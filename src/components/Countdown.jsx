@@ -38,7 +38,9 @@ const CountdownTimer = () => {
 
   return (
     <div>
-      <h2 id='countdown'>{`${timeLeft.hours.toString().padStart(2, '0')}:${timeLeft.minutes.toString().padStart(2, '0')}:${timeLeft.seconds.toString().padStart(2, '0')}`}</h2>
+      <h2 id='countdown' aria-live="polite">
+        {`${timeLeft.hours.toString().padStart(2, '0')}:${timeLeft.minutes.toString().padStart(2, '0')}:${timeLeft.seconds.toString().padStart(2, '0')}`}
+      </h2>
     </div>
   );
 };

@@ -163,6 +163,11 @@ const Grid = () => {
     
     navigator.clipboard.writeText(s).then(() => {
       console.log('Text copied to clipboard');
+      setIsAlertVisible(true);
+          setAlertMsg("Copied to clipboard");
+          setTimeout(() => {
+            setIsAlertVisible(false);
+          }, 3000);
     })
     .catch((error) => {
       console.error('Error copying text: ', error);
@@ -226,24 +231,24 @@ const Grid = () => {
         <div>
           <Mistakes strikes={mistakeStrikes}/>
 
-          <Button text="Shuffle" onClick={shufflePrompts} disabled={false} />
-          <Button text="Deselect all" onClick={() => setSelectedSquares([])} disabled={selectedSquares.length == 0} />
-          <Button text="Submit" onClick={handleSubmit} disabled={!(selectedSquares.length == 4 && !submitInTimeout)} />
+          <Button text="Shuffle" onClick={shufflePrompts} disabled={false} role="button" aria-label="Shuffle Grid" />
+          <Button text="Deselect all" onClick={() => setSelectedSquares([])} disabled={selectedSquares.length == 0} role="button" aria-label="Deselect All Squares" />
+          <Button text="Submit" onClick={handleSubmit} disabled={!(selectedSquares.length == 4 && !submitInTimeout)} role="button" aria-label="Submit Selection" />
         </div>
       ) : (
         <div>
-          <Button text="View Results" onClick={openResultModal} disabled={false} />
+          <Button text="View Results" onClick={openResultModal} disabled={false} role="button" aria-label="View Results" />
         </div>
       )}
 
-      <Modal isOpen={resultModalOpen} onClose={closeResultModal}>
+      <Modal isOpen={resultModalOpen} onClose={closeResultModal} role="dialog" aria-modal="true">
         <div id='result-modal'>
           <h1 id='result-title'>{outcomeText[mistakeStrikes]}</h1>
           <h3>Connections #290</h3> {/* TODO: fix or replace this */}
           <Attempts attempts={attempts}/>
           <h4 className='result-subtitle'>NEXT PUZZLE IN:</h4>
           <Countdown />
-          <Button text="Share Your Results" onClick={shareResults} disabled={false} />
+          <Button text="Share Your Results" onClick={shareResults} disabled={false} role="button" aria-label="Close Modal"/>
         </div>
       </Modal>
       

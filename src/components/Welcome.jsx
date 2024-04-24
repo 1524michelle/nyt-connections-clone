@@ -8,13 +8,13 @@ import './Welcome.css';
 const Welcome = ({ onPlay, date }) => {
     return (
         <>
-            <div className="welcome-stage">
+            <div className="welcome-stage" role="presentation">
                 <img id='welcome-icon' src={connectionsIcon} alt="connections icon" />
                 <h1 className='game-name' id='welcome-name'>Connections</h1>
                 <h3 className='welcome-h3'>Group words that share a common thread.</h3>
-                <Button text="Play" onClick={onPlay} disabled={false} />
+                <Button text="Play" onClick={onPlay} disabled={false} aria-label="Play button" />
                 <div className='welcome-p-div'>
-                    <p className='welcome-p bold'>{date}</p>
+                    <p className='welcome-p bold' role="status" aria-live="polite">{date}</p>
                     <p className='welcome-p by'>By Michelle Huang</p>
                 </div>
             </div>

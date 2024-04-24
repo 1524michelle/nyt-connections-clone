@@ -5,17 +5,22 @@ import './Button.css';
 
 const Button = ({ text, onClick, disabled }) => {
   let buttonClass = 'button';
-  if (!disabled && (text == 'Submit' || text == 'Share Your Results' || text == 'Play')) {
-    buttonClass += ' active-submit';
-    if (text == 'Play') {
-      buttonClass += ' play';
+
+  if (!disabled) {
+    if (text === 'Submit' || text === 'Share Your Results' || text === 'Play') {
+      buttonClass += ' active-submit';
+      if (text === 'Play') {
+        buttonClass += ' play';
+      }
+    } else {
+      buttonClass += ' active-other';
     }
-  } else if (!disabled) {
-    buttonClass += ' active-other';
+  } else {
+    buttonClass += ' disabled';
   }
 
   return (
-    <button className={buttonClass} onClick={onClick}>
+    <button className={buttonClass} onClick={onClick} disabled={disabled} aria-disabled={disabled}>
       {text}
     </button>
   );

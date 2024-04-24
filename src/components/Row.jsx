@@ -15,7 +15,9 @@ const Row = ({ category, words, difficulty }) => {
 
   return (
     <>
-      <div className={`row ${difficulty} ${slam ? 'slam' : ''}`}>
+      <div className={`row ${difficulty} ${slam ? 'slam' : ''}`}
+      role="row"
+      aria-label={`Category: ${category}, Words: ${words}, Difficulty: ${difficulty}`}>
         <div>
           <p className='category'>{category}</p>
           <p className='words'>{words}</p>

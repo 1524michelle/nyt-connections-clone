@@ -15,7 +15,8 @@ const Mistakes = ({ strikes }) => {
 
   return (
     <>
-      <p id='mistake-text'>Mistakes remaining: 
+      <p id='mistake-text' aria-live="polite">
+        Mistakes remaining: 
         <span id='mistake-bubbles'>
           {mistakeBubbles}
         </span>
