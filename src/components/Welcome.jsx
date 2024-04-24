@@ -12,7 +12,7 @@ const Welcome = ({ onPlay, date }) => {
                 <img id='welcome-icon' src={connectionsIcon} alt="connections icon" />
                 <h1 className='game-name' id='welcome-name'>Connections</h1>
                 <h3 className='welcome-h3'>Group words that share a common thread.</h3>
-                <Button text="Play" onClick={onPlay} isActive={true} />
+                <Button text="Play" onClick={onPlay} disabled={false} />
                 <div className='welcome-p-div'>
                     <p className='welcome-p bold'>{date}</p>
                     <p className='welcome-p by'>By Michelle Huang</p>

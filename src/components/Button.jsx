@@ -3,14 +3,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Button.css';
 
-const Button = ({ text, onClick, isActive }) => {
+const Button = ({ text, onClick, disabled }) => {
   let buttonClass = 'button';
-  if (isActive && (text == 'Submit' || text == 'Share Your Results' || text == 'Play')) {
+  if (!disabled && (text == 'Submit' || text == 'Share Your Results' || text == 'Play')) {
     buttonClass += ' active-submit';
     if (text == 'Play') {
       buttonClass += ' play';
     }
-  } else if (isActive) {
+  } else if (!disabled) {
     buttonClass += ' active-other';
   }
 
@@ -24,7 +24,7 @@ const Button = ({ text, onClick, isActive }) => {
 Button.propTypes = {
   text: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  isActive: PropTypes.bool.isRequired
+  disabled: PropTypes.bool.isRequired
 };
 
 export default Button;

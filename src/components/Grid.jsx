@@ -226,13 +226,13 @@ const Grid = () => {
         <div>
           <Mistakes strikes={mistakeStrikes}/>
 
-          <Button text="Shuffle" onClick={shufflePrompts} isActive={true} />
-          <Button text="Deselect all" onClick={() => setSelectedSquares([])} isActive={selectedSquares.length > 0} />
-          <Button text="Submit" onClick={handleSubmit} isActive={selectedSquares.length == 4 && !submitInTimeout} />
+          <Button text="Shuffle" onClick={shufflePrompts} disabled={false} />
+          <Button text="Deselect all" onClick={() => setSelectedSquares([])} disabled={selectedSquares.length == 0} />
+          <Button text="Submit" onClick={handleSubmit} disabled={!(selectedSquares.length == 4 && !submitInTimeout)} />
         </div>
       ) : (
         <div>
-          <Button text="View Results" onClick={openResultModal} isActive={true} />
+          <Button text="View Results" onClick={openResultModal} disabled={false} />
         </div>
       )}
 
@@ -243,7 +243,7 @@ const Grid = () => {
           <Attempts attempts={attempts}/>
           <h4 className='result-subtitle'>NEXT PUZZLE IN:</h4>
           <Countdown />
-          <Button text="Share Your Results" onClick={shareResults} isActive={true} />
+          <Button text="Share Your Results" onClick={shareResults} disabled={false} />
         </div>
       </Modal>
       

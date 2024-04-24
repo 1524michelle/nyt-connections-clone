@@ -43,6 +43,11 @@
     },
     "moduleNameMapper": {
       "\\.(css|less|scss)$": "<rootDir>/__mocks__/styleMock.js"
-    }
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/",
+      "\\.pnp\\.[^\\\/]+$",
+      "\\.png$" 
+    ]
   }
 }

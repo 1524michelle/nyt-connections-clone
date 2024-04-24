@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 import Button from './Button';
 
 test('renders a button with the correct text', () => {
-  render(<Button text="Test" onClick={() => {console.log("test");}} isActive={true} />);
+  render(<Button text="Test" onClick={() => {console.log("test");}} disabled={false} />);
   const buttonElement = screen.getByText(/test/i);
   expect(buttonElement).toBeInTheDocument();
 });
