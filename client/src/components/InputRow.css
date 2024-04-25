@@ -1,0 +1,21 @@
+.input-row label {
+    font-weight: bold;
+    display: block;
+}
+
+input {
+    border: none; 
+    border-bottom: 2px black solid;
+    background: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+}
+
+.word-input {
+    width: 15%;
+}
+
+.category-input {
+    width: 30%;
+}
