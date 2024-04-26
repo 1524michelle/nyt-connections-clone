@@ -19,12 +19,12 @@ function createConnection() {
     const gameName = gameNameInput.value.trim();
 
     const rows = [];
-    const difficulties = ['easy', 'medium', 'hard', 'extrahard'];
+    const difficulties = ['easy', 'medium', 'hard', 'extrahard']; // Array of difficulties
     const inputRows = document.querySelectorAll('.input-row');
     
-    for (let i = 0; i < 4; i++) {
-        const difficulty = difficulties[i];
-        const inputRow = inputRows[i];
+    for (let i = 0; i < 4; i++) { // Loop through 4 times
+        const difficulty = difficulties[i]; // Get difficulty at current index
+        const inputRow = inputRows[i]; // Get input row at current index
 
         const categoryInput = inputRow.querySelector(`#category-input-${difficulty}`);
         const wordInputs = inputRow.querySelectorAll('.word-input');
@@ -33,12 +33,14 @@ function createConnection() {
             const category = categoryInput.value.trim();
             const words = Array.from(wordInputs).map(input => input.value.trim()).filter(word => word !== '');
 
-            if (category !== '' && words.length == 4) { // todo: fail out + notify user if input is incomplete!
+            // Only add a row if both category and at least one word is provided
+            if (category !== '' && words.length > 0) {
                 rows.push({ category, words, difficulty });
             }
         }
     }
 
+    // Construct the JSON object
     const connection = {
         id: connectionId,
         name: gameName,
