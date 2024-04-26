@@ -13,8 +13,8 @@ const InputRow = ({ difficulty }) => {
         role="row"
         aria-label={`Input row of difficulty: ${difficulty}`}>
             <div>
-                <label htmlFor={`category-input-${difficulty}`}>
-                    CATEGORY: <input name={`category-input ${difficulty}`} aria-label="Category input" />
+                <label htmlFor={`category-input ${difficulty}`}>
+                    CATEGORY: <input id={`category-input ${difficulty}`} name={`category-input ${difficulty}`} aria-label="Category input" />
                 </label>
                 <label>
                     WORDS: <span aria-hidden="true"> </span>
