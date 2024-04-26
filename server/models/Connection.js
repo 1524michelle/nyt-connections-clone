@@ -35,6 +35,6 @@ function arrayLengthValidator(val) {
   return val.length === 4;
 }
 
-const Connection = mongoose.model('Connection', connectionSchema);
+const Connection = mongoose.model('Connection', connectionSchema, 'connections'); // specify connections collection
 
 module.exports = Connection;
