@@ -1,6 +1,8 @@
-# Connections Clone in React
+# Enhanced NYT Connections Game
 
 This project a clone of the [popular "Connections" game](https://www.nytimes.com/games/connections) featured in the New York Times. The game challenges players to find connections between seemingly unrelated words through a series of associations.
+
+I have also added an option for users to create, save, and share their own versions of the game.
 
 ## Overview
 
@@ -16,7 +18,7 @@ Modal dialogues: allow the player to access the settings, instructions on how to
 
 Enable users to create their own connections and share its link to their friends.
 
-Backend that serves up puzzle prompts each day.
+Backend that serves up new puzzle prompts each day.
 
 ## Contributing
 Contributions to the project are welcome! If you have any suggestions, improvements, or bug fixes, feel free to submit a pull request.
