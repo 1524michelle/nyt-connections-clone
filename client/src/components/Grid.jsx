@@ -180,10 +180,10 @@ const Grid = () => {
     navigator.clipboard.writeText(s).then(() => {
       console.log('Text copied to clipboard');
       setIsAlertVisible(true);
-          setAlertMsg("Copied to clipboard");
-          setTimeout(() => {
-            setIsAlertVisible(false);
-          }, 3000);
+      setAlertMsg("Copied to clipboard");
+      setTimeout(() => {
+        setIsAlertVisible(false);
+      }, 3000);
     })
     .catch((error) => {
       console.error('Error copying text: ', error);
