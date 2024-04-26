@@ -15,13 +15,22 @@ function getDate() {
 const Create = () => {
     // eslint-disable-next-line no-unused-vars
     const [date, setDate] = useState(getDate());
-    const [isAlertVisible, setIsAlertVisible] = useState(false); // controls visibility of alerts
+    const [isAlertVisible, setIsAlertVisible] = useState(false);
+    const [alertMsg, setAlertMsg] = useState("");
 
     // checks validity of submission & POSTS user created connections to API
     function createConnection() {
         const connectionId = uuidv4();
         const gameNameInput = document.querySelector('#game-name-input');
         const gameName = gameNameInput.value.trim();
+        if (gameName === '') {
+            setAlertMsg('Please enter a game title.');
+            setIsAlertVisible(true);
+            setTimeout(() => {
+                setIsAlertVisible(false);
+            }, 3000);
+            return;
+        }
 
         const rows = [];
         const difficulties = ['easy', 'medium', 'hard', 'extrahard'];
@@ -38,9 +47,28 @@ const Create = () => {
                 const category = categoryInput.value.trim();
                 const words = Array.from(wordInputs).map(input => input.value.trim()).filter(word => word !== '');
 
-                if (category !== '' && words.length == 4) {
-                    rows.push({ category, words, difficulty });
+                // Validation for incomplete rows
+                if (category === '' || words.length !== 4) {
+                    setAlertMsg('Please fill out all fields in each row.');
+                    setIsAlertVisible(true);
+                    setTimeout(() => {
+                        setIsAlertVisible(false);
+                    }, 3000);
+                    return;
                 }
+
+                // Validation for duplicate words
+                const uniqueWords = new Set(words);
+                if (uniqueWords.size !== words.length) {
+                    setAlertMsg('Please ensure there are no duplicate words in each row.');
+                    setIsAlertVisible(true);
+                    setTimeout(() => {
+                        setIsAlertVisible(false);
+                    }, 3000);
+                    return;
+                }
+
+                rows.push({ category, words, difficulty });
             }
         }
 
@@ -68,7 +96,7 @@ const Create = () => {
             console.log('Connection created:', data);
             // if successful, copy link to clipboard
             navigator.clipboard.writeText(`http://localhost:5173/nyt-connections-clone/${connectionId}`).then(() => {
-                console.log('Text copied to clipboard'); 
+                setAlertMsg("Link copied to clipboard");
                 setIsAlertVisible(true);
                 setTimeout(() => {
                     setIsAlertVisible(false);
@@ -92,7 +120,7 @@ const Create = () => {
                 </h1>
                 <Toolbar />
 
-                <Alert message="Link copied to clipboard" isVisible={isAlertVisible} />
+                <Alert message={alertMsg} isVisible={isAlertVisible} />
 
                 <div className='create-container'>
                     <p>create and share your own connections!</p>
