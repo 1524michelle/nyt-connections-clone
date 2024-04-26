@@ -26,30 +26,30 @@ const Grid = () => {
     'extrahard': '🟪'
   };
 
-  const defaultCategories = [
-    {
-      name: "UPDATE FOR ACCURACY",
-      prompts: ["AMEND", "CORRECT", "FIX", "REVISE"],
-      difficulty: "easy"
-    },
-    {
-      name: "QUARREL",
-      prompts: ["FIGHT", "ROW", "SCRAP", "TIFF"],
-      difficulty: "medium"
-    },
-    {
-      name: "GAMES OF CHANCE",
-      prompts: ["BINGO", "LOTTERY", "ROULETTE", "WAR"],
-      difficulty: "hard"
-    },
-    {
-      name: "___ CHIP",
-      prompts: ["BLUE", "COMPUTER", "POKER", "POTATO"],
-      difficulty: "extrahard"
-    }
-  ];
-
   useEffect(() => {
+    const defaultCategories = [
+      {
+        name: "UPDATE FOR ACCURACY",
+        prompts: ["AMEND", "CORRECT", "FIX", "REVISE"],
+        difficulty: "easy"
+      },
+      {
+        name: "QUARREL",
+        prompts: ["FIGHT", "ROW", "SCRAP", "TIFF"],
+        difficulty: "medium"
+      },
+      {
+        name: "GAMES OF CHANCE",
+        prompts: ["BINGO", "LOTTERY", "ROULETTE", "WAR"],
+        difficulty: "hard"
+      },
+      {
+        name: "___ CHIP",
+        prompts: ["BLUE", "COMPUTER", "POKER", "POTATO"],
+        difficulty: "extrahard"
+      }
+    ];
+
     const url = window.location.pathname;
     const id = url.split('/').pop(); // Extract the id from the URL
     if (id) {
