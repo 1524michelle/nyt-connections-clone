@@ -1,4 +1,5 @@
-// server.js
+require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -9,7 +10,9 @@ const PORT = process.env.PORT || 5010;
 
 const Connection = require('./models/Connection');
 
-mongoose.connect('mongodb://localhost:27017/nyt_connections_db')
+const connectionString = process.env.MONGODB_LOCAL_URI;
+
+mongoose.connect(connectionString)
   .then(() => {
     console.log('Connected to MongoDB');
   })
