@@ -9,6 +9,7 @@ function App() {
     <Router basename="/nyt-connections-clone">
       <Routes>
         <Route path="/" element={<Game />} />
+        <Route path="/:id" element={<Game />} />
         <Route path="/create" element={<Create />} />
       </Routes>
     </Router>

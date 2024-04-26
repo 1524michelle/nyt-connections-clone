@@ -45,8 +45,6 @@ function createConnection() {
         rows
     };
 
-    console.log(connection);
-
     // POST request to API endpoint
     fetch('http://localhost:5010/connections', {
         method: 'POST',

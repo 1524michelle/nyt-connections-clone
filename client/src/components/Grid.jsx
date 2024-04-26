@@ -26,36 +26,52 @@ const Grid = () => {
     'extrahard': '🟪'
   };
 
-  useEffect(() => {
-    fetchCategories();
-  }, []);
+  const defaultCategories = [
+    {
+      name: "UPDATE FOR ACCURACY",
+      prompts: ["AMEND", "CORRECT", "FIX", "REVISE"],
+      difficulty: "easy"
+    },
+    {
+      name: "QUARREL",
+      prompts: ["FIGHT", "ROW", "SCRAP", "TIFF"],
+      difficulty: "medium"
+    },
+    {
+      name: "GAMES OF CHANCE",
+      prompts: ["BINGO", "LOTTERY", "ROULETTE", "WAR"],
+      difficulty: "hard"
+    },
+    {
+      name: "___ CHIP",
+      prompts: ["BLUE", "COMPUTER", "POKER", "POTATO"],
+      difficulty: "extrahard"
+    }
+  ];
 
-  // TODO: this is hardcoded data for frontend testing
-  const fetchCategories = () => {
-    const data = [
-      {
-        name: "UPDATE FOR ACCURACY",
-        prompts: ["AMEND", "CORRECT", "FIX", "REVISE"],
-        difficulty: "easy"
-      },
-      {
-        name: "QUARREL",
-        prompts: ["FIGHT", "ROW", "SCRAP", "TIFF"],
-        difficulty: "medium"
-      },
-      {
-        name: "GAMES OF CHANCE",
-        prompts: ["BINGO", "LOTTERY", "ROULETTE", "WAR"],
-        difficulty: "hard"
-      },
-      {
-        name: "___ CHIP",
-        prompts: ["BLUE", "COMPUTER", "POKER", "POTATO"],
-        difficulty: "extrahard"
-      }
-    ];
-    setCategories(data);
-  }
+  useEffect(() => {
+    const url = window.location.pathname;
+    const id = url.split('/').pop(); // Extract the id from the URL
+    if (id) {
+      // Fetch categories from API
+      fetch(`http://localhost:5010/connections/${id}`)
+        .then(response => response.json())
+        .then(data => {
+          const fetchedCategories = data.rows.map(row => ({
+            name: row.category,
+            prompts: row.words,
+            difficulty: row.difficulty
+          }));
+          setCategories(fetchedCategories);
+        })
+        .catch(error => {
+          console.error('Error fetching categories:', error);
+        });
+    } else {
+      // Use hardcoded default data
+      setCategories(defaultCategories);
+    }
+  }, []);
 
   useEffect(() => {
     shufflePrompts();
