@@ -4,6 +4,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const { body, validationResult } = require('express-validator');
+const { sanitizeBody } = require('express-validator');
+const xss = require('xss');
 
 const app = express();
 const PORT = process.env.PORT || 5010;
@@ -23,6 +26,20 @@ mongoose.connect(connectionString)
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
+
+// Sanitize input
+const sanitizeInput = (req, res, next) => {
+  req.body.name = xss(req.body.name); // Sanitize name field
+  req.body.rows = req.body.rows.map(row => xss(row)); // Sanitize each row in the rows array
+  next();
+};
+
+// Input validation
+const validateInput = [
+  body('id').isString().trim().escape(), // Validate and sanitize id field
+  body('name').isString().trim().escape(), // Validate and sanitize name field
+  body('rows').isArray(), // Ensure rows is an array
+];
 
 // Routes
 app.get('/connections/:id', async (req, res) => {
@@ -47,6 +64,11 @@ app.get('/connections/:id', async (req, res) => {
 });
 
 app.post('/connections', (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+    
     const { id, name, rows } = req.body;
   
     const newConnection = new Connection({
