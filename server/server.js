@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5010;
 
 const Connection = require('./models/Connection');
 
-const connectionString = process.env.MONGODB_LOCAL_URI;
+const connectionString = process.env.MONGODB_URI;
 
 mongoose.connect(connectionString)
   .then(() => {
@@ -46,12 +46,7 @@ app.get('/connections/:id', async (req, res) => {
     }
 });
 
-app.post('/connections', validateInput, sanitizeInput, (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-    }
-    
+app.post('/connections', (req, res) => {
     const { id, name, rows } = req.body;
   
     const newConnection = new Connection({
