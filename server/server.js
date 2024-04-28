@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5010;
 
 const Connection = require('./models/Connection');
 
-const connectionString = process.env.MONGODB_URI;
+const connectionString = process.env.MONGODB_LOCAL_URI;
 
 mongoose.connect(connectionString)
   .then(() => {
