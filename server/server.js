@@ -63,7 +63,7 @@ app.get('/connections/:id', async (req, res) => {
     }
 });
 
-app.post('/connections', (req, res) => {
+app.post('/connections', validateInput, sanitizeInput, (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
