@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
-import { Alert, Button, InputRow, Toolbar } from './';
+import { useNavigate } from 'react-router-dom';
+import { Alert, Button, InputRow, Modal, Toolbar } from './';
 import { v4 as uuidv4 } from 'uuid';
 import './Create.css';
 
@@ -17,6 +18,17 @@ const Create = () => {
     const [date, setDate] = useState(getDate());
     const [isAlertVisible, setIsAlertVisible] = useState(false);
     const [alertMsg, setAlertMsg] = useState("");
+    const [successModalOpen, setSuccessModalOpen] = useState(false);
+    const [createdConnectionId, setCreatedConnectionId] = useState(null);
+    const navigate = useNavigate();
+
+    const openSuccessModal = () => {
+        setSuccessModalOpen(true);
+    };
+  
+    const closeSuccessModal = () => {
+        setSuccessModalOpen(false);
+    };
 
     // checks validity of submission & POSTS user created connections to API
     function createConnection() {
@@ -93,22 +105,45 @@ const Create = () => {
             return response.json();
         })
         .then(data => {
-            console.log('Connection created:', data);
-            // if successful, copy link to clipboard
-            navigator.clipboard.writeText(`http://localhost:5173/nyt-connections-clone/${connectionId}`).then(() => {
-                setAlertMsg("Link copied to clipboard");
-                setIsAlertVisible(true);
-                setTimeout(() => {
-                    setIsAlertVisible(false);
-                }, 3000);               
-            })
-            .catch((error) => {
-                console.error('Error copying text: ', error);
-            });
+            console.log('Connection created:', data, " with id: ", `${connectionId}`);
+            setCreatedConnectionId(connectionId);
+            openSuccessModal(true);
+            // const newPageUrl = `/${connectionId}`;
+            // navigate(newPageUrl);
+            // // if successful, copy link to clipboard
+            // navigator.clipboard.writeText(`http://localhost:5173/nyt-connections-clone/${connectionId}`).then(() => {
+            //     setAlertMsg("Link copied to clipboard");
+            //     setIsAlertVisible(true);
+            //     setTimeout(() => {
+            //         setIsAlertVisible(false);
+            //     }, 3000);               
+            // })
+            // .catch((error) => {
+            //     console.error('Error copying text: ', error);
+            // });
         })
         .catch(error => {
             console.error('Error creating connection:', error);
         });
+    }
+
+    const copyGameLink = () => {
+        if (createdConnectionId) {
+            const link = `${window.location.origin}/nyt-connections-clone/${createdConnectionId}`;
+            navigator.clipboard.writeText(link)
+                .then(() => {
+                    setAlertMsg("Link copied to clipboard");
+                    setIsAlertVisible(true);
+                    setTimeout(() => {
+                        setIsAlertVisible(false);
+                    }, 3000);
+                })
+                .catch((error) => {
+                    console.error('Error copying text: ', error);
+                });
+        } else {
+            console.log("No connection id created, unable to generate a link to the new game.");
+        }
     }
 
     return (
@@ -134,6 +169,14 @@ const Create = () => {
                     <Button text="Share new connection" onClick={createConnection} disabled={false} />
                 </div>
             </div>
+
+            <Modal isOpen={successModalOpen} onClose={closeSuccessModal} role="dialog" aria-modal="true">
+                <div id='result-modal'>
+                    <h1 id='result-title'>Game created!</h1>
+                    <Button text="Copy link to new game" onClick={copyGameLink} disabled={false} role="button" aria-label="Copy Link To New Game"/>
+                    <Button text="Go to new game" onClick={() => { navigate(`/${createdConnectionId}`); }} disabled={false} role="button" aria-label="Go To New Game"/>
+                </div>
+            </Modal>
         </>
     );
 };

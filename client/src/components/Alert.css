@@ -7,7 +7,7 @@
     color: white;
     padding: 10px 20px;
     border-radius: 2px;
-    z-index: 999; /* above other content, except modal */
+    z-index: 1000; /* above other content */
 }
 
 .fade {

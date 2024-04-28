@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* appears above all other content */
+    z-index: 999; /* appears above all other content, except alert */
 }
 
 @keyframes slideIn {
