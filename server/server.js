@@ -25,6 +25,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Routes
+app.get('/health', (req, res) => {
+  res.status(200).send('OK'); // Respond with a 200 OK status
+});
+
 app.get('/connections/:id', async (req, res) => {
     try {
       const connectionId = req.params.id;
