@@ -9,9 +9,9 @@ function App() {
   return (
     <Router basename="/nyt-connections-clone">
       <Routes>
-        <Route path="/" element={<Game />} />
+        <Route path="/" element={<Game shouldShowWelcome={true} />} />
         <Route path="/404" element={<NotFoundPage />} />
-        <Route path="/:id" element={<Game />} />
+        <Route path="/:id" element={<Game shouldShowWelcome={false} />} />
         <Route path="/create" element={<Create />} />
         <Route component={<NotFoundPage />} />
       </Routes>

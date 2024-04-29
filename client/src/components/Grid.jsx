@@ -53,33 +53,32 @@ const Grid = () => {
       }
     ];
 
+    const fetchData = async (id) => {
+      try {
+          const response = await fetch(`http://localhost:5010/connections/${id}`);
+          if (!response.ok) {
+              throw new Error('Connection not found');
+          }
+          const data = await response.json();
+          const fetchedCategories = data.rows.map(row => ({
+              name: row.category,
+              prompts: row.words,
+              difficulty: row.difficulty
+          }));
+          setCategories(fetchedCategories);
+      } catch (error) {
+          console.error('Error fetching categories:', error);
+          if (error.message === 'Connection not found') {
+              const newPageUrl = '/404';
+              navigate(newPageUrl);
+          }
+      }
+    };
+
     const url = window.location.pathname;
     const id = url.split('/').pop(); // Extract the id from the URL
     if (id) {
-      // Fetch categories from API
-      fetch(`http://localhost:5010/connections/${id}`)
-        .then(response => {
-          if (!response.ok) {
-            // If response is not ok, throw an error
-            throw new Error('Connection not found');
-          }
-          return response.json();
-        })
-        .then(data => {
-          const fetchedCategories = data.rows.map(row => ({
-            name: row.category,
-            prompts: row.words,
-            difficulty: row.difficulty
-          }));
-          setCategories(fetchedCategories);
-        })
-        .catch(error => {
-          console.error('Error fetching categories:', error);
-          if (error.message === 'Connection not found') {
-            const newPageUrl = '/404';
-            navigate(newPageUrl);
-          }
-        });
+      fetchData(id);
     } else {
       // Use hardcoded default data
       setCategories(defaultCategories);

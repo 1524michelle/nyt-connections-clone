@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Grid, LoadingBar, Toolbar, Welcome } from './components';
 import './Game.css';
 
@@ -11,11 +12,11 @@ function getDate() {
   return `${month} ${date}, ${year}`;
 }
 
-const Game = () => {
+const Game = ({ shouldShowWelcome }) => {
   // eslint-disable-next-line no-unused-vars
   const [date, setDate] = useState(getDate());
   const [loading, setLoading] = useState(true);
-  const [showWelcome, setShowWelcome] = useState(true);
+  const [showWelcome, setShowWelcome] = useState(shouldShowWelcome);
   const [fadeIn, setFadeIn] = useState(true);
 
   useEffect(() => {
@@ -56,5 +57,9 @@ const Game = () => {
     </div>
   );
 };
+
+Game.propTypes = {
+  shouldShowWelcome: PropTypes.bool.isRequired // if /:id suffix, we don't want to show welcome at all
+}
 
 export default Game;
