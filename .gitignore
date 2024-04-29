@@ -25,3 +25,6 @@ dist-ssr
 
 # Private environment variables
 .env
+
+# Compressed files
+*.zip
