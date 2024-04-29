@@ -108,19 +108,6 @@ const Create = () => {
             console.log('Connection created:', data, " with id: ", `${connectionId}`);
             setCreatedConnectionId(connectionId);
             openSuccessModal(true);
-            // const newPageUrl = `/${connectionId}`;
-            // navigate(newPageUrl);
-            // // if successful, copy link to clipboard
-            // navigator.clipboard.writeText(`http://localhost:5173/nyt-connections-clone/${connectionId}`).then(() => {
-            //     setAlertMsg("Link copied to clipboard");
-            //     setIsAlertVisible(true);
-            //     setTimeout(() => {
-            //         setIsAlertVisible(false);
-            //     }, 3000);               
-            // })
-            // .catch((error) => {
-            //     console.error('Error copying text: ', error);
-            // });
         })
         .catch(error => {
             console.error('Error creating connection:', error);

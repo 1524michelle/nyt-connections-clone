@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Grid.css';
 import { Alert, Attempts, Button, Countdown, Mistakes, Modal, Square, Row } from './';
 
@@ -15,6 +16,8 @@ const Grid = () => {
   const [isAlertVisible, setIsAlertVisible] = useState(false); // controls visibility of alerts
   const [alertMsg, setAlertMsg] = useState(""); // controls message in alerts
   const [submitInTimeout, setSubmitInTimeout] = useState(false); // controls submit button use after a mistake
+
+  const navigate = useNavigate();
 
   // index using mistakeStrikes
   const outcomeText = ["Perfect!", "Impressive", "Solid", "Phew", "Next Time"];
@@ -55,7 +58,13 @@ const Grid = () => {
     if (id) {
       // Fetch categories from API
       fetch(`http://localhost:5010/connections/${id}`)
-        .then(response => response.json())
+        .then(response => {
+          if (!response.ok) {
+            // If response is not ok, throw an error
+            throw new Error('Connection not found');
+          }
+          return response.json();
+        })
         .then(data => {
           const fetchedCategories = data.rows.map(row => ({
             name: row.category,
@@ -66,6 +75,10 @@ const Grid = () => {
         })
         .catch(error => {
           console.error('Error fetching categories:', error);
+          if (error.message === 'Connection not found') {
+            const newPageUrl = '/404';
+            navigate(newPageUrl);
+          }
         });
     } else {
       // Use hardcoded default data

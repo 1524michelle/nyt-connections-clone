@@ -10,6 +10,7 @@ function App() {
     <Router basename="/nyt-connections-clone">
       <Routes>
         <Route path="/" element={<Game />} />
+        <Route path="/404" element={<NotFoundPage />} />
         <Route path="/:id" element={<Game />} />
         <Route path="/create" element={<Create />} />
         <Route component={<NotFoundPage />} />
