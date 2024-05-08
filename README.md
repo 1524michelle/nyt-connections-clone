@@ -2,7 +2,7 @@
 
 This project a clone of the [popular "Connections" game](https://www.nytimes.com/games/connections) featured in the New York Times. The game challenges players to find connections between seemingly unrelated words through a series of associations.
 
-I have also added an option for users to create, save, and share their own versions of the game.
+I have also added an option for users to create, save, and share links to their own versions of the game.
 
 ## Overview
 
