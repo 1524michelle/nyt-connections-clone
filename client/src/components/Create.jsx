@@ -5,6 +5,8 @@ import { Alert, Button, InputRow, Modal, Toolbar } from './';
 import { v4 as uuidv4 } from 'uuid';
 import './Create.css';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5010';
+
 function getDate() {
     const today = new Date();
     const month = today.toLocaleString('default', { month: 'long' });
@@ -91,7 +93,7 @@ const Create = () => {
         };
 
         // POST request to API endpoint
-        fetch('http://localhost:5010/connections', {
+        fetch(`${API_URL}/connections`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

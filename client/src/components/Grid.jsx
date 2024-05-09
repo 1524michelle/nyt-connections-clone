@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import './Grid.css';
 import { Alert, Attempts, Button, Countdown, Mistakes, Modal, Square, Row } from './';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5010';
+
 const Grid = () => {
   const [selectedSquares, setSelectedSquares] = useState([]); // array of selected squares
   const [categories, setCategories] = useState([]); // array of categories & prompts
@@ -55,7 +57,7 @@ const Grid = () => {
 
     const fetchData = async (id) => {
       try {
-          const response = await fetch(`http://localhost:5010/connections/${id}`);
+        const response = await fetch(`${API_URL}/connections/${id}`);
           if (!response.ok) {
               throw new Error('Connection not found');
           }
